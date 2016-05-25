@@ -1,0 +1,13 @@
+<h1> Log In </h1>
+<%=form_tag(url:login_path) do %>
+  <%if flash.any?%>
+    <%flash.each do |message_type, message|%>
+      <div class="alert alert-<%=message_type%>"><%=message%></div>
+    <%end%>
+  <%end%>
+  <%=label_tag :email%>
+  <%=text_field_tag :email%>
+  <%=label_tag :password%>
+  <%=password_field_tag :password%>
+  <%=submit_tag "Login"%>
+<%end%>
