@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   end
 
   def update
-   @user = User.find(params[:user_id])
-    if @user.update(user_params)
+   @user = User.find(params[:id])
+    if @user.update(edit_user_params)
       redirect_to @user
     else
       render "edit"
@@ -32,8 +32,13 @@ class UsersController < ApplicationController
   end
 
   private
+
     def user_params
       params.require(:user).permit(:name, :email, :password, :phone_number)
+    end
+
+    def edit_user_params
+      params.require(:user).permit(:name, :password, :phone_number, :description, :current_phase)
     end
 
 end
