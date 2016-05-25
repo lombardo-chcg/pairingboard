@@ -1,11 +1,15 @@
 <h1><%=@user.name%>'s Profile!</h1>
 
-<h3><%=@user.name%></h3>
-<h3><%=@user.email%></h3>
+<h2><%=@user.name%></h2>
+<%if @user.current_phase%>
+  <h4>Phase: <%=@user.current_phase%></h4>
+<% end %>
+<h4>Email: <%=@user.email%></h4>
 <%if @user.phone_number%>
-  <h3><%=@user.phone_number%></h3>
+  <h4>Phone Number: <%=@user.phone_number%></h4>
 <%end%>
 <%if @user.description %>
+  <h4>I'd like to mentor/learn about on these topics:</h4>
   <p><%= @user.description %></p>
 <%end%>
 
