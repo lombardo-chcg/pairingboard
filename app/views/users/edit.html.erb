@@ -1,0 +1,26 @@
+<h1>Edit Your Profile!</h1>
+
+<%= form_for @user do |f| %>
+  <%if @user.errors.any? %>
+    <div>
+      <h2><%=pluralize(@user.errors.count, "error")%> kept this user from being saved. </h2>
+        <ul>
+          <%@user.errors.full_messages.each do |error|%>
+           <li><%=error%></li>
+          <%end%>
+        </ul>
+      </div>
+    <%end%>
+    <%=f.label :name%>
+    <%=f.text_field :name%>
+    <%=f.label :phone_number%>
+    <%=f.text_field :phone_number%>
+    <%=f.label :email%>
+    <%=f.text_field :email%>
+    <%= f.label :current_phase %>
+    <%= f.text_field :current_phase %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.submit "Update Your Profile", method: :put %>
+<%end%>

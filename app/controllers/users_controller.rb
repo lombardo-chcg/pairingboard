@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def create
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
-   @user = User.find(params[:user_id])
+   @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user
     else
