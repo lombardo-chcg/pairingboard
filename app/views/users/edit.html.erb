@@ -21,23 +21,15 @@
           <%=f.label :phone_number%>
           <%=f.text_field :phone_number, class: "form-control" %>
         </div>
-      </div>
-      <div class="row">
         <div class="col-lg-4">
           <%= f.label :current_phase %>
-          <%= f.select :current_phase, class: "form-control" %>
-          <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+          <%= f.select :current_phase, options_for_select([ ['1', 1], ['2', 2], ['3', 3], ['4', 4] ], 1), class: "form-control" %>
         </div>
-        </div>
-        <div class="col-lg-4">
-          <%= f.label :description, "I'd like to mentor on these topics:" %>
-          <%= f.text_area :description, class: "form-control" %>
-        </div>
+      </div>
+      <div class="col-lg-12">
+        <%= f.label :description, "I'd like to mentor on these topics:" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
     </div>
       <div class="col-lg-12">
         <%= f.submit "Update Your Profile", class: "btn-block" %>
