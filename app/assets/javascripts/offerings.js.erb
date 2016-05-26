@@ -26,13 +26,13 @@ $(document).ready(function() {
 
   $('body').on("click", ".open_offering_link", function(event) {
     event.preventDefault();
+    var thisButton = $(this);
     var time = $(this).attr("value");
     var user = ($(this).parent().parent().find('button').attr('name'));
     var userName = ($(this).parent().parent().find('button').text());
     $('#appointmentModal').modal();
-    $("#mentorName").html(userName)
-    $("#mentorTime").html(time)
-
+    $(".mentorName").html(userName);
+    $(".mentorTime").html(time);
     $('body').on("click", "button[name='bookAppointment']", function(event) {
       event.preventDefault();
       var request = $.ajax({
@@ -40,7 +40,31 @@ $(document).ready(function() {
         url: "/appointments",
         data: {time, user}
       });
+      request.done(function(response){
+        $(".flash_area").show();
+        $(".flash_area").html("<div class='alert alert-success'>Appointment Booked!</div>").fadeOut(4000);
+        thisButton.removeClass('open_offering_link').addClass('taken_offering_link');
+        $('#appointmentModal').modal('hide');
+      });
     });
+  });
+
+  $('body').on("click", ".taken_offering_link", function(event) {
+    event.preventDefault();
+    var time = $(this).attr("value");
+    var user = ($(this).parent().parent().find('button').attr('name'));
+    var request = $.ajax({
+      method: "Get",
+      url: "/appointments/find/",
+      data: {time, user}
+    });
+    request.done(function(response) {
+      console.log(response)
+      $('#showAppointmentModal').modal();
+      $(".mentorName").html(userName)
+      $(".mentorTime").html(time)
+    });
+
   });
 
 

@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   resources :offerings, except: [ :update, :edit, :put  ]
 
-  resources :appointments, only: [ :create, :destroy ]
+  resources :appointments, only: [ :create, :destroy, :show ]
 end

@@ -14,102 +14,14 @@
   <div class="form-group">
     <div class="row">
       <ul class='nav nav-pills'>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "9:00" %>
-            <%= check_box_tag 'offering_tag[9:00]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "9:30" %>
-            <%= check_box_tag 'offering_tag["9:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "10:00" %>
-            <%= check_box_tag 'offering_tag["10:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "10:30" %>
-            <%= check_box_tag 'offering_tag["10:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="btn-group">
-            <%= label_tag "11:00" %>
-            <%= check_box_tag 'offering_tag["11:00"]' %>
-          </div>
-        </li>
-        <li class="btn btn-default">
-          <div>
-            <%= label_tag "11:30" %>
-            <%= check_box_tag 'offering_tag["11:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "12:00" %>
-            <%= check_box_tag 'offering_tag["12:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "12:30" %>
-            <%= check_box_tag 'offering_tag["12:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "1:00" %>
-            <%= check_box_tag 'offering_tag["1:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "1:30" %>
-            <%= check_box_tag 'offering_tag["1:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "2:00" %>
-            <%= check_box_tag 'offering_tag["2:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "2:30" %>
-            <%= check_box_tag 'offering_tag["2:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "3:00" %>
-            <%= check_box_tag 'offering_tag["3:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "3:30" %>
-            <%= check_box_tag 'offering_tag["3:30"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "4:00" %>
-            <%= check_box_tag 'offering_tag["4:00"]' %>
-          </div>
-        </li>
-        <li>
-          <div class="col-xs-16">
-            <%= label_tag "4:30" %>
-            <%= check_box_tag 'offering_tag["4:30"]' %>
-          </div>
-        </li>
+        <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
+          <li>
+            <div class="col-xs-16">
+              <%= label_tag time %>
+              <%= check_box_tag "offering_tag[#{time}]" %>
+            </div>
+          </li>
+        <% end %>
       </ul>
     <br>
     <div class="row">

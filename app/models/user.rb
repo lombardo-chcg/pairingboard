@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     is_offering = false
     open_offerings.each do |offering|
       if offering.start_time == time
-        is_offering = true
+        return offering
       end
     end
     return is_offering
