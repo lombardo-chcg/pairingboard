@@ -1,0 +1,23 @@
+$(document).ready(function() {
+
+  $('body').on("submit", "#mentor-submit-button", function(event) {
+    event.preventDefault();
+    console.log($(this).serialize())
+    var request = $.ajax({
+      method: "Post",
+      url: "/offerings",
+      data: $(this).serialize(),
+    })
+  });
+
+  var today = new Date();
+  $('#mentor-submit-button .input-group.date').datepicker({
+    weekStart: 0,
+    daysOfWeekDisabled: "0,1,2,3,4,5",
+    daysOfWeekHighlighted: "6",
+    todayHighlight: true,
+    startDate: today,
+    autoclose: true,
+  });
+
+});

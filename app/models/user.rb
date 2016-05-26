@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def is_offering?(time)
+
+  end
+
   def student_appointments
     return self.appointments
   end
