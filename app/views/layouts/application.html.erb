@@ -34,6 +34,7 @@
         </li>
         <%if logged_in? %>
             <li><%=link_to current_user.name, user_path(current_user)%></li>
+            <li><%=link_to "Messages", "#{user_path(current_user)}/messages"%></li>
             <li><%=link_to "Logout", logout_path, method: :delete%></li>
           <%else%>
             <li><%=link_to "Register", new_user_path%></li>

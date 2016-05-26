@@ -22,6 +22,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def messages
+
+  end
+
+
   def update
    @user = User.find(params[:id])
     if @user.update(edit_user_params)
