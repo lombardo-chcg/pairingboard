@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/apprentice/pairingboard/app/helpers/application_helper.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/helpers/application_helper.rb": [
         1,
         1,
         0,
         null,
         null,
         1,
-        4,
+        0,
         null,
         null,
         1,
@@ -20,30 +20,89 @@
         null,
         null
       ],
-      "/Users/apprentice/pairingboard/app/models/user.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/user.rb": [
+        1,
+        1,
+        1,
         1,
         1,
         1,
         null,
         1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
         null,
         null
       ],
-      "/Users/apprentice/pairingboard/app/controllers/offerings_controller.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/conversation.rb": [
         1,
         1,
-        2,
-        null,
-        null
-      ],
-      "/Users/apprentice/pairingboard/app/controllers/application_controller.rb": [
         1,
-        null,
-        null,
         1,
         null
       ],
-      "/Users/apprentice/pairingboard/app/controllers/sessions_controller.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/converser.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/message.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/controllers/conversations_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/controllers/offerings_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/controllers/sessions_controller.rb": [
         0,
         0,
         0,
@@ -70,7 +129,12 @@
         0,
         0
       ],
-      "/Users/apprentice/pairingboard/app/controllers/users_controller.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/controllers/users_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -116,14 +180,13 @@
         0,
         0
       ],
-      "/Users/apprentice/pairingboard/app/models/appointment.rb": [
-        0,
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/appointment.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/apprentice/pairingboard/app/models/offering.rb": [
+      "/Users/apprentice/Desktop/pairingboard/pairingboard/app/models/offering.rb": [
         0,
         0,
         0,
@@ -145,6 +208,6 @@
         0
       ]
     },
-    "timestamp": 1464219468
+    "timestamp": 1464289624
   }
 }
