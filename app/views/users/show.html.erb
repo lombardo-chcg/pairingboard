@@ -29,7 +29,7 @@
   </div>
   <br>
   <%= link_to "Edit Your Profile", edit_user_path(current_user) %>
-  <%= link_to "Send #{@user.name} a message",
+  <%= link_to "Send #{@user.name} a message", new_user_conversation_path(@user)%>
 <% if @user.mentor_appointments.any? %>
   <h2>Dropping Knowledge On:</h2>
   <br>
