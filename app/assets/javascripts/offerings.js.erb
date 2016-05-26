@@ -12,6 +12,7 @@ $(document).ready(function() {
 
   var today = new Date();
   $('#mentor-submit-button .input-group.date').datepicker({
+    format: "dd-mm-yyyy",
     weekStart: 0,
     daysOfWeekDisabled: "0,1,2,3,4,5",
     daysOfWeekHighlighted: "6",
@@ -19,5 +20,28 @@ $(document).ready(function() {
     startDate: today,
     autoclose: true,
   });
+
+  var time;
+  var user;
+
+  $('body').on("click", ".open_offering_link", function(event) {
+    event.preventDefault();
+    var time = $(this).attr("value");
+    var user = ($(this).parent().parent().find('button').attr('name'));
+    var userName = ($(this).parent().parent().find('button').text());
+    $('#appointmentModal').modal();
+    $("#mentorName").html(userName)
+    $("#mentorTime").html(time)
+
+    $('body').on("click", "button[name='bookAppointment']", function(event) {
+      event.preventDefault();
+      var request = $.ajax({
+        method: "Post",
+        url: "/appointments",
+        data: {time, user}
+      });
+    });
+  });
+
 
 });

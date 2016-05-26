@@ -1,22 +1,23 @@
 class OfferingsController < ApplicationController
   def index
     @offerings
+    @users = User.all
   end
 
   def create
-    p "PARAM"
+    p "params"
     p params
-    p "OFFERING TAG"
     offering_tags = params["offering_tag"]
     offering_tags.each do |time,checked|
-      current_user.offerings.create(start_time: time)
+      current_user.offerings.create(start_time: time, offering_date: params["date"])
     end
+
     # current_user.offerings.create(offering_params)
     redirect_to offerings_path
   end
 
   private
     def offering_params
-      params.permit(:start_time, :end_time, :offering_tag)
+      params.permit(:start_time, :end_time, :offering_tag, :date)
     end
 end

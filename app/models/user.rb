@@ -10,7 +10,23 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def is_offering?(time)
+    is_offering = false
+    open_offerings.each do |offering|
+      if offering.start_time == time
+        is_offering = true
+      end
+    end
+    return is_offering
+  end
 
+  def is_booked?(time)
+    is_booked = false
+    mentor_appointments.each do |appointment|
+      if appointment.offering.start_time == time
+        is_booked = true
+      end
+    end
+    return is_booked
   end
 
   def student_appointments

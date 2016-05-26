@@ -14,4 +14,10 @@ module ApplicationHelper
     end
   end
 
+def date_of_next_saturday
+  date  = Date.parse('Saturday')
+  delta = date > Date.today ? 0 : 7
+  date + delta
+end
+
 end
