@@ -20,6 +20,15 @@
         null,
         null
       ],
+      "/Users/apprentice/pairingboard/app/models/user.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
       "/Users/apprentice/pairingboard/app/controllers/offerings_controller.rb": [
         1,
         1,
@@ -119,9 +128,14 @@
         0,
         0,
         0,
-        0
-      ],
-      "/Users/apprentice/pairingboard/app/models/user.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -131,6 +145,6 @@
         0
       ]
     },
-    "timestamp": 1464216109
+    "timestamp": 1464219468
   }
 }
