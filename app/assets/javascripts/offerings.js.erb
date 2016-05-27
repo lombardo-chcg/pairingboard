@@ -1,0 +1,106 @@
+$(document).ready(function() {
+
+  $('#myModal form').on("submit", "#mentor-submit-button", function(event) {
+    event.preventDefault();
+    var request = $.ajax({
+      method: "Post",
+      url: "/offerings",
+      data: $(this).serialize(),
+    });
+    request.done(function(response) {
+        $('.container').append(response)
+        $(".flash_area").show();
+        $(".flash_area").html("<div class='alert alert-success'>Appointment Booked!</div>").fadeOut(2000);
+        $('#myModal').modal('hide');
+    });
+  });
+
+  var today = new Date();
+  $('#mentor-submit-button .input-group.date').datepicker({
+    format: "dd-mm-yyyy",
+    weekStart: 0,
+    daysOfWeekDisabled: "0,1,2,3,4,5",
+    daysOfWeekHighlighted: "6",
+    todayHighlight: true,
+    startDate: today,
+    autoclose: true,
+  });
+
+  // bring up book appt
+  $('body').on("click", ".open_offering_link", function(event) {
+    event.preventDefault();
+    // var thisButton = $(this);
+      var time = $(this).attr("value");
+      var user = ($(this).parent().parent().find('button').attr('name'));
+      var userName = ($(this).parent().parent().find('button').text());
+      $('#appointmentModal').modal();
+      $(".mentorName").html(userName).attr('name' , user);
+      $(".mentorTime").html(time);
+  });
+
+  // booking of appt
+    $('body').on("click", "button[name='bookAppointment']", function(event) {
+      event.preventDefault();
+      var user = $(this).parent().parent().find('.mentorName').attr('name');
+      var time = $(this).parent().parent().find('.mentorTime').text();
+      var request = $.ajax({
+        method: "Post",
+        url: "/appointments",
+        data: {time, user}
+      });
+      request.done(function(response){
+        $(".flash_area").show();
+        $(".flash_area").html("<div class='alert alert-success'>Appointment Booked!</div>").fadeOut(2000);
+        $("a[href='/offerings/"+response.offeringId+"']").removeClass('open_offering_link').addClass('taken_offering_link').attr('href', "/appointments/"+response.appointmentId);
+        $('#appointmentModal').modal('hide');
+      });
+    });
+
+  // show appointment
+  $('body').on("click", ".taken_offering_link", function(event) {
+    event.preventDefault();
+    var thisButton = $(this);
+    var time = $(this).attr("value");
+    var user = ($(this).parent().parent().find('button').attr('name'));
+    var appointmentId = $(this).attr('name')
+    var request = $.ajax({
+      method: "Get",
+      url: "/appointments/"+appointmentId,
+      data: {time, user}
+    });
+    request.done(function(response) {
+      $('.show-mentor-name').html('Mentor Name: ' + response.mentor)
+      $('.show-student-name').html('Student Name: ' + response.student)
+      $('.show-appointment-time').html('Time: ' + time)
+      $('#show-appointment-modal').modal();
+      if (response.appointmentHolder == true ) {
+        $('.show-appointment-cancel').html("<button type='button' class='btn btn-info btn-lg cancel-appointment' name="+response.appointmentId+">Cancel Appointment</button>");
+      } else {
+        $('.show-appointment-cancel').html('');
+      };
+    });
+  });
+
+    // cancel appointment
+    $('body').on("click", ".cancel-appointment", function(event) {
+      event.preventDefault();
+      var appointmentId = $(this).attr('name');
+      var time = $(this).attr("value");
+      var user = ($(this).parent().parent().find('button').attr('name'));
+      var request = $.ajax({
+        method: "DELETE",
+        url: "/appointments/"+appointmentId
+      });
+      request.done(function(response) {
+        console.log(response)
+        $(".flash_area").show();
+        $(".flash_area").html("<div class='alert alert-danger'>Appointment Cancelled!</div>").fadeOut(2000);
+        $("a[href='/appointments/"+response.appointmentId+"']").removeClass('taken_offering_link').addClass('open_offering_link').attr('href', "/offerings/"+response.offeringId);
+        $('#show-appointment-modal').modal('hide');
+      });
+    });
+
+
+
+
+});
