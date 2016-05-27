@@ -24,15 +24,10 @@ ActiveRecord::Schema.define(version: 20160526183303) do
   end
 
   create_table "conversations", force: :cascade do |t|
+    t.integer  "creator_id"
+    t.integer  "joiner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "conversers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "conversation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "messages", force: :cascade do |t|

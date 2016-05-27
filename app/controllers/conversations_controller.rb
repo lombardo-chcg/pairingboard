@@ -6,18 +6,14 @@ class ConversationsController < ApplicationController
     #get the id of current user
     user_id = User.find(session[:user_id]).id
     #get all conversations of current user
-    conversations = @user.conversations
-    #go through all messages in a conversation until the recipient id is found, return the recipient id
-    other_person_id_array = Conversation.get_sender_id(user_id, conversations)
-    #using the recipient id, get the recipient's name
-
-    @other_person_array = Conversation.sender_name(other_person_id_array)
-    #get the conversation for use in the helper path
+    @started_conversations = @user.started_conversations
+    @joined_conversations = @user.joined_conversations
   end
 
   def show
-    conversation = Conversation.find(params[:id])
-    @messages = conversation.messages
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages
+    @message = Message.new
   end
 
   def new
@@ -25,33 +21,29 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    # returns all conversations of the recipient
-    recipient = User.find(params[:user_id])
-    sender_id = session[:user_id]
-    conversations = recipient.conversations
-    puts "=================#{conversations.first.messages.last.body}============"
-    conversation_id = Conversation.conversation_exist(conversations,sender_id)
-    if conversation_id
-      @message = Message.new(sender_id: session[:user_id], body: params[:message][:body], conversation_id: conversation_id)
+
+    if params[:conversation_id]
+      conversation = Conversation.find(params[:conversation_id])
+    else
+      joiner = User.find(params[:user_id])
+      conversation = current_user.find_conversation(joiner)
+    end
+
+    if conversation
+      @message = conversation.messages.new(sender_id: current_user.id, body: params[:message][:body], conversation_id: conversation.id)
       if @message.save
-        redirect_to user_path(recipient)
+        redirect_to user_conversation_path(current_user, conversation)
       else
         render 'new'
       end
-
     else
-      new_conversation = Conversation.new()
-      @message = Message.new(sender_id: session[:user_id], body: params[:message][:body], conversation_id: new_conversation.id)
-
+      new_conversation = Conversation.create(creator_id: current_user.id, joiner_id: joiner.id)
+      @message = new_conversation.messages.new(sender_id: current_user.id, body: params[:message][:body])
       if @message.save
-        new_conversation.save
-        redirect_to user_path(recipient)
+        redirect_to user_path(joiner)
       else
         render 'new'
       end
     end
-
-    # if a conversation already exists with the recipient, then use that existing conversation_id
-    # else create a new Conversation object and add sender as the user_id, and add new conversation_id to current message
   end
 end

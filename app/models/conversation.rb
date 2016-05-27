@@ -1,27 +1,26 @@
 class Conversation < ActiveRecord::Base
-  has_many :conversers
-  has_many :users, through: :conversers
+  belongs_to :user
   has_many :messages
 
-  def self.get_sender_id(user_id, conversations)
-    other_person_id_array = []
+  def self.get_sender(user_id, conversations)
+    senders_array = []
     conversations.each do |conversation|
       conversation.messages.each do |message|
         if message.sender_id != user_id
-          other_person_id_array << message.sender_id
+          senders_array << User.find(message.sender_id)
         end
       end
     end
-    other_person_id_array.uniq
+    senders_array.uniq
   end
 
-  def self.sender_name(other_person_id_array)
-    other_person_array = []
-    other_person_id_array.each do |person_id|
-      other_person_array << User.find(person_id)
-    end
-    other_person_array
-  end
+  # def self.sender_name(other_person_id_array)
+  #   other_person_array = []
+  #   other_person_id_array.each do |person_id|
+  #     other_person_array << User.find(person_id)
+  #   end
+  #   other_person_array
+  # end
 ###Fucked
   def self.conversation_exist(conversations, sender_id)
     # iterate over all the recipient's conversations
@@ -41,10 +40,10 @@ class Conversation < ActiveRecord::Base
   #input person object and logged in user's id
   #output conversation where the message's sender id is logged in user's id
   #usage: get all conversations that involve the logged in user
-  def self.get_conversation_by_sender(person, user_id)
+  def self.get_conversation_by_sender(user, person)
       person.conversations.each do |conversation|
         conversation.messages.each do |message|
-          if message.sender_id == user_id
+          if message.sender == user
             return conversation
           end
         end
