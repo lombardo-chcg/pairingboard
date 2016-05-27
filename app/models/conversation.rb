@@ -1,6 +1,5 @@
 class Conversation < ActiveRecord::Base
-  has_many :conversers
-  has_many :users, through: :conversers
+  belongs_to :user
   has_many :messages
 
   def self.get_sender(user_id, conversations)
