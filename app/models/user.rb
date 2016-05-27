@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :offerings, foreign_key: :mentor_id
   has_many :appointments, foreign_key: :student_id
+  has_many :messages, foreign_key: :sender_id
+  has_many :conversers
+  has_many :conversations, through: :conversers
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true

@@ -14,10 +14,16 @@ module ApplicationHelper
     end
   end
 
-def date_of_next_saturday
-  date  = Date.parse('Saturday')
-  delta = date > Date.today ? 0 : 7
-  date + delta
-end
+
+  def display_sender_name(sender_id)
+    User.find(sender_id).name
+  end
+
+  def date_of_next_saturday
+    date  = Date.parse('Saturday')
+    delta = date > Date.today ? 0 : 7
+    date + delta
+  end
+
 
 end

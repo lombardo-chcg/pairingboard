@@ -1,0 +1,5 @@
+<%@messages.each do |message| %>
+<%= display_sender_name(message.sender_id) %>
+<%= message.body%>
+<br>
+<%end%>

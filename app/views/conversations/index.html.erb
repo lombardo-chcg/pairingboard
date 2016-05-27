@@ -1,0 +1,14 @@
+<h1><%=@user.name%>'s Conversations!</h1>
+<!-- We have an array of people who have sent the user messages.
+  .conversations.messages.s
+
+
+ params has user_id -->
+<div class="row">
+  <% user_id = @user.id %>
+  <% @other_person_array.each do |person| %>
+  <%= person %>
+    <%=link_to "#{person.name}", user_conversation_path(current_user, Conversation.get_conversation_by_sender(person, current_user.id)) %>
+  <% end %>
+</div>
+
