@@ -56,8 +56,8 @@ class UsersController < ApplicationController
     end
 
   def skip_password_attribute
-    if params[:password].blank? && params[:password_validation].blank?
-      params.except!(:password, :password_validation)
+    if params[:password].blank?
+      params.except!(:password)
     end
   end
 
