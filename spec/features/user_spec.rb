@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user is able to login and logout" do
-  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob")}
+  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob", current_phase: 4)}
   scenario "user sees profile" do
     visit '/login'
     within('form') do
@@ -38,13 +38,14 @@ feature "user is able to register" do
 end
 
 feature 'user has a dynamic profile' do
-  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob")}
-  let!(:user2){User.create(email: "bob@bob.com", password: "password", name: "Other Bob")}
+  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob", current_phase: 4)}
+  let!(:user2){User.create(email: "bob@bob.com", password: "password", name: "Other Bob", current_phase: 3)}
+  let!(:user3){User.create(email: "other_bob@bob.com", password: "password", name: "The Real Bob", current_phase: 1)}
   let!(:offering){ user.offerings.create(offering_date: "28-05-2016", start_time: "9:00") }
   let!(:offering2){ user2.offerings.create(offering_date: "28-05-2016", start_time: "9:30") }
   let!(:offering3){ user.offerings.create(offering_date: "28-05-2016", start_time: "10:00") }
   let!(:appointment){ user2.appointments.create(offering_id: offering.id) }
-  let!(:appointment2){ user.appointments.create(offering_id: offering2.id) }
+  let!(:appointment2){ user3.appointments.create(offering_id: offering2.id) }
   scenario 'user is able to edit their profile' do
     visit '/login'
     within('form') do
@@ -75,7 +76,7 @@ feature 'user has a dynamic profile' do
   scenario 'user is able to see their student appointments' do
     visit '/login'
     within('form') do
-      fill_in 'Email', with:"dom@bob.com"
+      fill_in 'Email', with:"other_bob@bob.com"
       fill_in 'Password', with:"password"
     end
     click_button 'Login'

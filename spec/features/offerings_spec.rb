@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature "user sees index page of offerings" do
-  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob")}
-  let!(:user2){User.create(email: "bob@bob.com", password: "password", name: "Dominick")}
+  let!(:user){User.create(email: "dom@bob.com", password: "password", name: "Bob", current_phase: 4)}
+  let!(:user2){User.create(email: "bob@bob.com", password: "password", name: "Dominick", current_phase: 3)}
+  let!(:user3){User.create(email: "bob2@bob.com", password: "password", name: "Other Bob", current_phase: 2)}
   let!(:offering){ user.offerings.create(offering_date: "28-05-2016", start_time: "10:00") }
   let!(:offering2){ user2.offerings.create(offering_date: "28-05-2016", start_time: "10:30") }
   let!(:offering3){ user.offerings.create(offering_date: "28-05-2016", start_time: "11:00") }
@@ -12,7 +13,7 @@ feature "user sees index page of offerings" do
   let!(:offering7){ user.offerings.create(offering_date: "28-05-2016", start_time: "1:00") }
   let!(:offering8){ user.offerings.create(offering_date: "28-05-2016", start_time: "1:30") }
   let!(:appointment){ user2.appointments.create(offering_id: offering.id) }
-  let!(:appointment2){ user.appointments.create(offering_id: offering2.id) }
+  let!(:appointment2){ user3.appointments.create(offering_id: offering2.id) }
 
   scenario "user can click on button and offer to mentor" do
     visit '/'
