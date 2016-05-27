@@ -57,7 +57,10 @@ class Appointment < ActiveRecord::Base
   end
 
   def higher_phase
-    if mentor.current_phase > 0
+    if mentor.current_phase <= student.current_phase
+      errors.add(:student, "Your mentor can't be in a lower phase!")
+    else  
+      return true
     end
   end
 
