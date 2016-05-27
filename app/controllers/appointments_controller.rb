@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.new(offering_id: offering.id, student_id: current_user.id)
     if request.xhr?
       if appointment.save
+        notify_mentor_appointment(current_user, mentor, offering, "create")
         render json: {appointment: true, appointmentId: appointment.id, offeringId: offering.id}
       else
         error = appointment.errors.messages
@@ -37,8 +38,12 @@ class AppointmentsController < ApplicationController
   def destroy
     appointment = Appointment.find(params[:id])
     appointment_id = appointment.id
+    mentor = User.find(appointment.offering.mentor_id)
     offering_id = appointment.offering.id
+    offering = appointment.offering
+
     if appointment.student_id == current_user.id
+      notify_mentor_appointment(current_user, mentor, offering, "destroy")
       appointment.destroy
       if request.xhr?
         render json: {appointment: true, offeringId: offering_id, appointmentId: appointment_id}
