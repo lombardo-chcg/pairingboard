@@ -2,13 +2,46 @@ class User < ActiveRecord::Base
   has_many :offerings, foreign_key: :mentor_id
   has_many :appointments, foreign_key: :student_id
   has_many :messages, foreign_key: :sender_id
-  has_many :conversers
-  has_many :conversations, through: :conversers
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
-  validates :password, length: {minimum: 8}
+  validates :password, length: {minimum: 8}, :on => :create
 
+  def started_conversations
+    started_conversations = Conversation.where(creator_id: self.id)
+    conversations = []
+
+    if started_conversations.length > 0
+      started_conversations.each {|c| conversations << c}
+    end
+    return conversations
+  end
+
+  def joined_conversations
+    joined_conversations = Conversation.where(joiner_id: self.id)
+    conversations = []
+    if joined_conversations.length > 0
+      joined_conversations.each {|c| conversations << c}
+    end
+    return conversations
+  end
+
+  def conversations
+    result = []
+    result.push(started_conversations).push(joined_conversations).flatten
+  end
+
+  def find_conversation(user)
+    if self.conversations.length > 0
+      self.conversations.each do |conversation|
+        if conversation.creator_id == user.id || conversation.joiner_id == user.id
+          return conversation
+        end
+      end
+    else
+      return nil
+    end
+  end
 
   has_secure_password
 

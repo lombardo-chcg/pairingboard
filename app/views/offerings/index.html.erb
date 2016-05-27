@@ -23,7 +23,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <ul class='nav nav-pills'>
         <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
-        <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= user.name %></button></li>
+        <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= truncate(user.name, :length => 10 ) %></button></li>
         <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
         <% if user.is_booked?(time) != false %>
         <li><a class="taken_offering_link" value="<%= time %>" href='/appointments/<%= user.is_booked?(time).id %>'><%= time %></a></li>
