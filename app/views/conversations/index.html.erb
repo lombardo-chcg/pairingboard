@@ -5,10 +5,11 @@
 
  params has user_id -->
 <div class="row">
+  wwwwww
   <% user_id = @user.id %>
-  <% @other_person_array.each do |person| %>
-  <%= person %>
-    <%=link_to "#{person.name}", user_conversation_path(current_user, Conversation.get_conversation_by_sender(person, current_user.id)) %>
+  <% @senders_array.each do |sender| %>
+   <%= sender %>
+    <%=link_to "#{sender.name}", user_conversation_path(current_user, Conversation.get_conversation_by_sender(sender, current_user)) %>
   <% end %>
 </div>
 
