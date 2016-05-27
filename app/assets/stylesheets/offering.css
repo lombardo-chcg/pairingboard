@@ -6,7 +6,28 @@
   padding: 10px 15px;
 }
 
-.open_offering_link {
+.mentor-title {
+    font-size: 30px;
+}
+
+.link-to-profile {
+  color: #ffffff;
+}
+
+.show-mentor-phase , .show-mentor-description {
+  font-size: 17px;
+}
+
+.details {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mentor-header{
+  font-size: 25px;
+  font-weight: bold;
+}
+.open_offering_link, .user-profile {
   display: block;
   padding: 10px 15px;
   background-image: -webkit-linear-gradient(#02a5de, #029acf 6%, #028fc0);
@@ -34,9 +55,9 @@
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
-button[name="Offer To Mentor"]:hover, button[name="Offer To Mentor"]:active, button[name="Offer To Mentor"]:focus, 
+button[name="Offer To Mentor"]:hover, button[name="Offer To Mentor"]:active, button[name="Offer To Mentor"]:focus,
 button[name="bookAppointment"]:hover, button[name="bookAppointment"]:active, button[name="bookAppointment"]:focus,
-.cancel-appointment:hover, .cancel-appointment:active, .cancel-appointment:focus, 
+.cancel-appointment:hover, .cancel-appointment:active, .cancel-appointment:focus,
 .book-appointment:hover, .book-appointment:active, .book-appointment:focus {
   text-decoration: none;
   color: #ffffff;
@@ -93,6 +114,7 @@ button[name="bookAppointment"]:hover, button[name="bookAppointment"]:active, but
 .checkbox-btn {
   margin: 2px;
 }
+
 
 
 @media (max-width: 768px) {
