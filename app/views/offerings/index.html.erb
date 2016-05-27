@@ -15,6 +15,10 @@
   <h3 class="get-knowledge">Get Yourself Some Knowledge</h3>
   <h4 class="saturday-date">Mentor offerings for: <%= @saturday.strftime("%A, %b %d") %> </h4>
   <% @users.each do |user| %>
+
+  <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
+
+
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <ul class='nav nav-pills'>
@@ -34,11 +38,11 @@
       </div>
     </div>
     <br>
+    <% end %>
   <% end %>
 
-    <div class="col-lg-12 flash_area">
+    <div class="col-lg-12 flash_area">  </div>
 
-  </div>
 <!-- Offer To Mentor Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -56,9 +60,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
-
 </div>
 
   <!-- Make Appointment Model -->
@@ -81,7 +83,6 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -136,14 +137,7 @@
         </div>
       </div>
     </div>
-
-
 </div>
 
-
-
-
-      <!-- </div> -->
-    <!-- </div> -->
 
 
