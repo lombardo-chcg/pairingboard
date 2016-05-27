@@ -11,6 +11,33 @@
   </div>
 </div>
 
+<br>
+<br>
+
+
+<div class="container">
+  <h3>Get Yourself Some Knowledge</h3>
+
+  <% @users.each do |user| %>
+  <div class="row">
+    <ul class='nav nav-pills'>
+      <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
+      <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= user.name %></button></li>
+      <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
+      <% if user.is_booked?(time) != false %>
+      <li><a class="taken_offering_link" value="<%= time %>" href='/appointments/<%= user.is_booked?(time).id %>'><%= time %></a></li>
+      <% elsif user.is_offering?(time) != false %>
+      <li><a class="open_offering_link" value="<%= time %>" href='/offerings/<%= user.is_offering?(time).id  %>'><%= time %></a></li>
+      <% else %>
+      <li class="not_available"><%= time %></li>
+      <% end %>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <br>
+  <% end %>
+
 <!-- Offer To Mentor Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
@@ -30,35 +57,8 @@
     </div>
 
   </div>
+
 </div>
-</div>
-<br>
-<br>
-
-
-<div class="container">
-  <h3>Get Yourself Some Knowledge</h3>
-
-  <% @users.each do |user| %>
-  <div class="row">
-    <ul class='nav nav-pills'>
-      <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
-        <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= user.name %></button></li>
-        <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
-          <% if user.is_booked?(time) %>
-            <li><a class="taken_offering_link" value="<%= time %>" href='#'><%= time %></a></li>
-          <% elsif user.is_offering?(time) %>
-            <li><a class="open_offering_link" value="<%= time %>" href='#'><%= time %></a></li>
-          <% else %>
-            <li class="not_available"><%= time %></li>
-          <% end %>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
-    <br>
-  <% end %>
-
 
   <!-- Make Appointment Model -->
   <div id="appointmentModal" class="modal fade" role="dialog">
@@ -73,44 +73,48 @@
         <div class="modal-body">
           <h1 class="mentorName">Mentor Name: </h1>
           <h2 class="mentorTime">Time: <h2>
-          <button type="button" class="btn btn-info btn-lg" name='bookAppointment'>Book Appointment</button>
-        </div>
-        <div class="modal-footer">
+            <button type="button" class="btn btn-info btn-lg" name='bookAppointment'>Book Appointment</button>
+          </div>
+          <div class="modal-footer">
 
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
         </div>
+
       </div>
-
     </div>
+
+    <!-- Make Appointment Model -->
+    <div id="show-appointment-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Offer To Mentor Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Cancel An Appointment</h4>
+          </div>
+          <div class="modal-body">
+            <h1 class="show-mentor-name"></h1>
+            <h2 class="show-student-name"> <h2>
+            <h2 class="show-appointment-time"> <h2>
+            <div class="show-appointment-cancel"></div>
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <!-- Make Appointment Model -->
-  <div id="showAppointmentModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Offer To Mentor Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Book An Appointment</h4>
-        </div>
-        <div class="modal-body">
-          <h1 class="ShowModalMentorName">Mentor Name: </h1>
-          <h2 class="mentorTime">Time: <h2>
-          <button type="button" class="btn btn-info btn-lg" name='bookAppointment'>Cancel Appointment</button>
-        </div>
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 
 
-
-</div>
+      <!-- </div> -->
+    <!-- </div> -->
 
 

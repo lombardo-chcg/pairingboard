@@ -23,10 +23,10 @@ class User < ActiveRecord::Base
     is_booked = false
     mentor_appointments.each do |appointment|
       if appointment.offering.start_time == time
-        is_booked = true
+        return appointment
       end
     end
-    return is_booked
+    is_booked = false
   end
 
   def student_appointments
