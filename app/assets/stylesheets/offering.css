@@ -116,7 +116,40 @@ button[name="bookAppointment"]:hover, button[name="bookAppointment"]:active, but
   margin: 2px;
 }
 
+.saturday-date {
+  text-align: center;
+  font-size: 19px;
+}
 
+button[name="Offer To Mentor"] {
+  width: 45%;
+}
+
+.board-title {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.get-knowledge {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+#offer-to-mentor, .board-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.flash-alert {
+  text-align: center;
+  font-size: 16px;
+}
+
+.flash_area {
+  margin-top: 26px;
+}
 
 @media (max-width: 768px) {
 

@@ -1,25 +1,24 @@
 <div class="row">
-  <div class="col-lg-4">
-    <h2>DBC Pair Board</h2>
+  <div class="col-lg-12">
+    <h2 class="board-title">DBC Pair Board</h2>
 
     <div id='offer-to-mentor'>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" name='Offer To Mentor'>Offer To Mentor</button>
     </div>
   </div>
-  <div class="col-lg-8 flash_area">
-
-  </div>
 </div>
 
-<br>
-<br>
-
+<!-- <br> -->
+<!-- <br> -->
 
 <div class="container">
-  <h3>Get Yourself Some Knowledge</h3>
-
+  <h3 class="get-knowledge">Get Yourself Some Knowledge</h3>
+  <h4 class="saturday-date">Mentor offerings for: <%= @saturday.strftime("%A, %b %d") %> </h4>
   <% @users.each do |user| %>
+
   <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
+
+
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <ul class='nav nav-pills'>
@@ -39,9 +38,10 @@
       </div>
     </div>
     <br>
-
     <% end %>
   <% end %>
+
+    <div class="col-lg-12 flash_area">  </div>
 
 <!-- Offer To Mentor Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -60,9 +60,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
-
 </div>
 
   <!-- Make Appointment Model -->
@@ -85,7 +83,6 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -140,14 +137,7 @@
         </div>
       </div>
     </div>
-
-
 </div>
 
-
-
-
-      <!-- </div> -->
-    <!-- </div> -->
 
 
