@@ -9,7 +9,8 @@ class AppointmentsController < ApplicationController
       if appointment.save
         render json: {appointment: true, appointmentId: appointment.id, offeringId: offering.id}
       else
-        status 422
+        error = appointment.errors.messages
+        render json: { message: error }, status: 422
       end
     else
       #non ajax response
@@ -50,12 +51,3 @@ class AppointmentsController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-

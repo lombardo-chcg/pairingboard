@@ -4,6 +4,7 @@
 
 .name_button {
   padding: 10px 15px;
+  width: 100px;
 }
 
 .open_offering_link {
@@ -93,6 +94,7 @@ button[name="bookAppointment"]:hover, button[name="bookAppointment"]:active, but
 .checkbox-btn {
   margin: 2px;
 }
+
 
 
 @media (max-width: 768px) {

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
-  validates :password, length: {minimum: 8}
+  validates :password, length: {minimum: 8}, :on => :create
 
   def started_conversations
     started_conversations = Conversation.where(creator_id: self.id)
