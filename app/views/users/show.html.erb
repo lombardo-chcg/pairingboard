@@ -39,7 +39,7 @@
       <% @user.mentor_appointments.each do |appointment| %>
       <li>
         <p>With: <%= appointment.student.name %></p>
-        <p>Beginning At: <%= appointment.offering.start_time %></p>
+        <p>Beginning At: <%= appointment.offering.offering_date %> <%= appointment.offering.start_time %></p>
       </li>
       <% end %>
       </ul>
@@ -56,7 +56,7 @@
       <% @user.student_appointments.each do |appointment| %>
       <li>
         <p>Mentor: <%= appointment.offering.mentor.name %></p>
-        <p>Beginning At: <%= appointment.offering.start_time %></p>
+        <p>Beginning At: <%= appointment.offering.offering_date %> <%= appointment.offering.start_time %></p>
       </li>
       <% end %>
       </ul>
@@ -72,7 +72,7 @@
       <ul>
       <% @user.open_offerings.each do |offering| %>
       <li>
-        <p>Beginning At: <%= offering.start_time %></p>
+        <p><%= offering.offering_date.strftime("%B %d, %Y") %> at <%= offering.start_time %></p>
       </li>
       <% end %>
       </ul>

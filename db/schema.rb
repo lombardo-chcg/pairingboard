@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20160526183303) do
 
   create_table "offerings", force: :cascade do |t|
     t.integer  "mentor_id"
-    t.boolean  "available",  default: true
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "available",     default: true
+    t.date     "offering_date"
+    t.string   "start_time"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|

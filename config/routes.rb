@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+
   resources :offerings, except: [ :update, :edit, :put ]
+
+  resources :appointments, only: [ :create, :destroy, :show ]
 end

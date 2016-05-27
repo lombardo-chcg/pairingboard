@@ -1,0 +1,83 @@
+.not_available {
+  padding: 10px 15px;
+}
+
+.name_button {
+  padding: 10px 15px;
+}
+
+.open_offering_link {
+  display: block;
+  padding: 10px 15px;
+  background-image: -webkit-linear-gradient(#02a5de, #029acf 6%, #028fc0);
+  background-image: -o-linear-gradient(#02a5de, #029acf 6%, #028fc0);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#02a5de), color-stop(6%, #029acf), to(#028fc0));
+  background-image: linear-gradient(#02a5de, #029acf 6%, #028fc0);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff02a5de', endColorstr='#ff028fc0', GradientType=0);
+  -webkit-filter: none;
+          filter: none;
+  border: 1px solid #02749c;
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #029acf;
+}
+
+.open_offering_link:hover, .open_offering_link:active, .open_offering_link:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #02749c;
+  border-color: #016d92;
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+button[name="Offer To Mentor"]:hover, button[name="Offer To Mentor"]:active, button[name="Offer To Mentor"]:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #02749c;
+  border-color: #016d92;
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.taken_offering_link {
+  display: block;
+  padding: 10px 15px;
+  background-image: -webkit-linear-gradient(#d9831f, #ac6819 6%, #cc7b1d);
+  background-image: -o-linear-gradient(#d9831f, #ac6819 6%, #cc7b1d);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d9831f), color-stop(6%, #ac6819), to(#cc7b1d));
+  background-image: linear-gradient(#d9831f, #ac6819 6%, #cc7b1d);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff02a5de', endColorstr='#ff028fc0', GradientType=0);
+  -webkit-filter: none;
+          filter: none;
+  border: 1px solid #ac6819;
+  border-radius: 6px;
+  color: #ffffff;
+  background-color: #ac6819;
+}
+
+.taken_offering_link:hover, .taken_offering_link:active, .taken_offering_link:focus {
+  background-image: -webkit-linear-gradient(#e08b27, #d9831f 6%, #cc7b1d);
+  background-image: -o-linear-gradient(#e08b27, #d9831f 6%, #cc7b1d);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e08b27), color-stop(6%, #d9831f), to(#cc7b1d));
+  background-image: linear-gradient(#e08b27, #d9831f 6%, #cc7b1d);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe08b27', endColorstr='#ffcc7b1d', GradientType=0);
+  -webkit-filter: none;
+          filter: none;
+  border: 1px solid #ac6819;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ac6819;
+  border-color: #ac6819;
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}

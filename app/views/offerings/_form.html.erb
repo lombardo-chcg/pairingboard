@@ -1,20 +1,28 @@
-<%=form_tag(offerings_path, role: "form") do %>
+<%=form_tag(offerings_path, role: "form", id: 'mentor-submit-button' ) do %>
   <%if flash.any?%>
     <%flash.each do |message_type, message|%>
       <div class="alert alert-<%=message_type%>"><%=message%></div>
     <%end%>
   <%end%>
+
+  <div class="input-group date">
+    <input type="text" class="form-control" name='date'>
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-th"></i></span>
+  </div>
+
   <div class="form-group">
     <div class="row">
-      <div class="col-lg-4">
-          <%= label_tag :start_time %>
-          <%= select_tag :start_time, options_for_select([ ['9:00', '9:00'], ['9:30', '9:30'], ['10:00', '10:00'], ['10:30', '10:30'], ['11:00', '11:00'], ['11:30', '11:30'], ['12:00', '12:00'], ['12:30', '12:30'], ['1:00', '13:00'],['1:30', '13:30'], ['2:00', '14:00'], ['2:30', '14:30'], ['3:00', '15:00'], ['3:30', '15:30'], ['4:00', '16:00'], ['4:30', '16:30'], ], '9:00'), class: "form-control" %>
-        </div>
-        <div class="col-lg-4">
-          <%= label_tag :end_time %>
-          <%= select_tag :end_time, options_for_select([ ['9:30', '9:30'], ['10:00', '10:00'], ['10:30', '10:30'], ['11:00', '11:00'], ['11:30', '11:30'], ['12:00', '12:00'], ['12:30', '12:30'], ['1:00', '13:00'],['1:30', '13:30'], ['2:00', '14:00'], ['2:30', '14:30'], ['3:00', '15:00'], ['3:30', '15:30'], ['4:00', '16:00'], ['4:30', '16:30'], ['5:00', '17:00'], ], '9:30'), class: "form-control" %>
-        </div>
-    </div>
+      <ul class='nav nav-pills'>
+        <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
+          <li>
+            <div class="col-xs-16">
+              <%= label_tag time %>
+              <%= check_box_tag "offering_tag[#{time}]" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     <br>
     <div class="row">
       <div class="col-lg-12">
@@ -22,4 +30,5 @@
       </div>
     </div>
   </div>
+</div>
 <%end%>
