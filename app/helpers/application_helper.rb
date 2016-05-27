@@ -14,4 +14,8 @@ module ApplicationHelper
     end
   end
 
+  def display_sender_name(sender_id)
+    User.find(sender_id).name
+  end
+
 end
