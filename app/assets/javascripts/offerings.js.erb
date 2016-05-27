@@ -128,8 +128,28 @@ $(document).ready(function() {
         method: "GET",
         url:  "/users/"+userId
       });
+
       request.done(function(response) {
         console.log(response)
+        var name = response.userName
+        $('.mentor-title').html(response.userName)
+        if (response.userPhase === null) {
+           $('.show-mentor-phase').html("No phase provided")
+        }else {
+          $('.show-mentor-phase').html(response.userPhase)
+        }
+        if(response.userPhone === null ){
+           $('.show-mentor-phone').html("Sorry, no phone number provided!")
+        }else{
+          $('.show-mentor-phone').html(response.userPhone)
+        }if(response.userDescription === null ){
+          $('.show-mentor-description').html("No story provided")
+        }else{
+          $('.show-mentor-description').html(response.userDescription)
+        }
+        $('.link-to-profile').html("<a class='btn btn-default user-profile' href='/users/" + userId +"'>"+ name +"profile </a>")
+        $('#show-user-modal').modal();
+
       });
     });
 });
