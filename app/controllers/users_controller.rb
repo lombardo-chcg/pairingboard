@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :skip_password_attribute, only: :update
 
   def new
     @user = User.new
@@ -6,6 +7,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if request.xhr?
+      render json: {  userName: @user.name,
+                      userPhase: @user.current_phase,
+                      userPhone: @user.phone_number,
+                      userDescription: @user.description }
+    else
+      @user
+    end
   end
 
   def edit
@@ -45,5 +54,11 @@ class UsersController < ApplicationController
     def edit_user_params
       params.require(:user).permit(:name, :password, :phone_number, :description, :current_phase)
     end
+
+  def skip_password_attribute
+    if params[:password].blank? && params[:password_validation].blank?
+      params.except!(:password, :password_validation)
+    end
+  end
 
 end

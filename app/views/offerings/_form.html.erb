@@ -5,28 +5,42 @@
     <%end%>
   <%end%>
 
+    <div class="col-lg-16">
   <div class="input-group date">
-    <input type="text" class="form-control" name='date'>
-      <span class="input-group-addon">
-        <i class="glyphicon glyphicon-th"></i></span>
+      <label for="date" class="hidden">Date</label>
+      <input type="text" class="form-control" name='date'>
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-th"></i>
+        </span>
+      </div>
   </div>
-
+  <br>
   <div class="form-group">
     <div class="row">
       <ul class='nav nav-pills'>
         <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
           <li>
-            <div class="col-xs-16">
-              <%= label_tag time %>
-              <%= check_box_tag "offering_tag[#{time}]" %>
-            </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+<!--               <label for="<%= time %>"><%= time %></label>
+              <input type="checkbox" name="offering_tag[<%= time %>]" id="offering_tag_<%= time %>" value="1">
+
+              <%= label_tag time, nil, class: "open_offering_link" %>
+              <%= check_box_tag "offering_tag[#{time}]" %> -->
+                <span class="button-checkbox">
+                  <button type="button" class="btn checkbox-btn" data-color="primary"><%= time %></button>
+                  <input type="checkbox" class="hidden" name="offering_tag[<%= time %>]" id="offering_tag_<%= time %>" value="1" />
+                </span>
+              </div>
+          </div>
           </li>
+          <!-- <br> -->
         <% end %>
       </ul>
     <br>
     <div class="row">
       <div class="col-lg-12">
-        <%=submit_tag "Submit", class: 'btn-block' %>
+        <%=submit_tag "Submit", class: 'btn btn-info btn-lg book-appointment' %>
       </div>
     </div>
   </div>
