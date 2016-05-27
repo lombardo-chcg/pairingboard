@@ -1,45 +1,44 @@
 <div class="row">
-  <div class="col-lg-4">
-    <h2>DBC Pair Board</h2>
+  <div class="col-lg-12">
+    <h2 class="board-title">DBC Pair Board</h2>
 
     <div id='offer-to-mentor'>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" name='Offer To Mentor'>Offer To Mentor</button>
     </div>
   </div>
-  <div class="col-lg-8 flash_area">
-
-  </div>
 </div>
 
-<br>
-<br>
-
+<!-- <br> -->
+<!-- <br> -->
 
 <div class="container">
-  <h3>Get Yourself Some Knowledge</h3>
-
+  <h3 class="get-knowledge">Get Yourself Some Knowledge</h3>
+  <h4 class="saturday-date">Mentor offerings for: <%= @saturday.strftime("%A, %b %d") %> </h4>
   <% @users.each do |user| %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <ul class='nav nav-pills'>
-        <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
-        <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= truncate(user.name, :length => 10 ) %></button></li>
-        <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
-        <% if user.is_booked?(time) != false %>
-        <li><a class="taken_offering_link" value="<%= time %>" href='/appointments/<%= user.is_booked?(time).id %>'><%= time %></a></li>
-        <% elsif user.is_offering?(time) != false %>
-        <li><a class="open_offering_link" value="<%= time %>" href='/offerings/<%= user.is_offering?(time).id  %>'><%= time %></a></li>
-        <% else %>
-        <li class="not_available"><%= time %></li>
-        <% end %>
-        <% end %>
-        <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class='nav nav-pills'>
+          <% if user.open_offerings.length > 0 || user.mentor_appointments.length > 0 %>
+          <li><button name='<%= user.id %>' type='button' class='btn btn-default name_button'><%= truncate(user.name, :length => 10 ) %></button></li>
+          <% Offering::AVAILABLE_OFFERING_TIMES.each do |time| %>
+          <% if user.is_booked?(time) != false %>
+          <li><a class="taken_offering_link" value="<%= time %>" href='/appointments/<%= user.is_booked?(time).id %>'><%= time %></a></li>
+          <% elsif user.is_offering?(time) != false %>
+          <li><a class="open_offering_link" value="<%= time %>" href='/offerings/<%= user.is_offering?(time).id  %>'><%= time %></a></li>
+          <% else %>
+          <li class="not_available"><%= time %></li>
+          <% end %>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-  <br>
+    <br>
   <% end %>
 
+    <div class="col-lg-12 flash_area">
+
+  </div>
 <!-- Offer To Mentor Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">

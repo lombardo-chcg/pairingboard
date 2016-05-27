@@ -11,7 +11,7 @@ $(document).ready(function() {
     request.done(function(response) {
         $('.container').append(response)
         $(".flash_area").show();
-        $(".flash_area").html("<div class='alert alert-success'>Appointment Booked!</div>").fadeOut(3500);
+        $(".flash_area").html("<div class='alert alert-success flash-alert'>Appointment Booked!</div>").fadeOut(3500);
         $('#myModal').modal('hide');
     });
     request.fail(function(error) {
@@ -21,7 +21,7 @@ $(document).ready(function() {
         var errorMessage = message.student[0]        
         $('#myModal').modal('hide');
         $(".flash_area").show();
-        $(".flash_area").html("<div class='alert alert-danger'>"+errorMessage+"</div>").fadeOut(3500);
+        $(".flash_area").html("<div class='alert alert-danger flash-alert'>"+errorMessage+"</div>").fadeOut(3500);
     });
   });
 
@@ -61,7 +61,7 @@ $(document).ready(function() {
       });
       request.done(function(response){
         $(".flash_area").show();
-        $(".flash_area").html("<div class='alert alert-success'>Appointment Booked!</div>").fadeOut(3500);
+        $(".flash_area").html("<div class='alert alert-success flash-alert'>Appointment Booked!</div>").fadeOut(3500);
         $("a[href='/offerings/"+response.offeringId+"']").removeClass('open_offering_link').addClass('taken_offering_link').attr('href', "/appointments/"+response.appointmentId);
         $('#appointmentModal').modal('hide');
       });
@@ -72,7 +72,7 @@ $(document).ready(function() {
         var errorMessage = message.student[0]        
         $('#appointmentModal').modal('hide');
         $(".flash_area").show();
-        $(".flash_area").html("<div class='alert alert-danger'>"+errorMessage+"</div>").fadeOut(3500);
+        $(".flash_area").html("<div class='alert alert-danger flash-alert'>"+errorMessage+"</div>").fadeOut(3500);
       });
 
     });
@@ -115,7 +115,7 @@ $(document).ready(function() {
       request.done(function(response) {
         console.log(response)
         $(".flash_area").show();
-        $(".flash_area").html("<div class='alert alert-danger'>Appointment Cancelled!</div>").fadeOut(3500);
+        $(".flash_area").html("<div class='alert alert-danger flash-alert'>Appointment Cancelled!</div>").fadeOut(3500);
         $("a[href='/appointments/"+response.appointmentId+"']").removeClass('taken_offering_link').addClass('open_offering_link').attr('href', "/offerings/"+response.offeringId);
         $('#show-appointment-modal').modal('hide');
       });

@@ -1,11 +1,11 @@
 class OfferingsController < ApplicationController
   def index
+    @saturday = date_of_next("Saturday")
     @offerings
     @users = User.all
   end
 
   def create
-
     offering_tags = params["offering_tag"]
     if offering_tags == nil
       if request.xhr?
@@ -37,4 +37,10 @@ class OfferingsController < ApplicationController
     def offering_params
       params.permit(:start_time, :end_time, :offering_tag, :date)
     end
+
+  def date_of_next(day)
+    date  = Date.parse(day)
+    delta = date > Date.today ? 0 : 7
+    date + delta
+  end
 end
