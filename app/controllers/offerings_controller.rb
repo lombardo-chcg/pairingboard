@@ -5,16 +5,32 @@ class OfferingsController < ApplicationController
   end
 
   def create
+
     offering_tags = params["offering_tag"]
+    if offering_tags == nil
+      if request.xhr?
+        error = "Invalid offering!"
+        render json: { message: error }, status: 422
+      end
+    else
     offering_tags.each do |time,checked|
-      current_user.offerings.create(start_time: time, offering_date: params["date"])
+      offering = current_user.offerings.new(start_time: time, offering_date: params["date"])
+        unless offering.save
+          if request.xhr?
+            error = offering.errors.messages
+            render json: { message: error }, status: 422
+            return false
+          end
+        end
+      end
     end
     if request.xhr?
       render '_offering_row', layout: false, locals: {user: current_user}
     else
-    # current_user.offerings.create(offering_params)
+  # current_user.offerings.create(offering_params)
       redirect_to offerings_path
     end
+
   end
 
   private
