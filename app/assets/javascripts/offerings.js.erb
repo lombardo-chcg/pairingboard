@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  // Mentor submits new offerings
   $('#myModal form').on("submit", "#mentor-submit-button", function(event) {
     event.preventDefault();
     var request = $.ajax({
@@ -15,6 +16,7 @@ $(document).ready(function() {
     });
   });
 
+  // DateFinder function for New Mentor Offerings
   var today = new Date();
   $('#mentor-submit-button .input-group.date').datepicker({
     format: "dd-mm-yyyy",
@@ -100,7 +102,15 @@ $(document).ready(function() {
       });
     });
 
-
-
-
+    // click on user name and see profile modal
+    $('body').on('click', '.name_button', function(event) {
+      userId = $(this).attr('name')
+      request = $.ajax({
+        method: "GET",
+        url:  "/users/"+userId
+      });
+      request.done(function(response) {
+        console.log(response)
+      });
+    });
 });

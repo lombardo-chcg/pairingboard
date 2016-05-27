@@ -6,6 +6,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if request.xhr?
+      render json: {  userName: @user.name,
+                      userPhase: @user.current_phase,
+                      userPhone: @user.phone_number,
+                      userDescription: @user.description }
+    else
+      @user
+    end
   end
 
   def edit
