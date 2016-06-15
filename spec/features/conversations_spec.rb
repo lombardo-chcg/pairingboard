@@ -14,6 +14,7 @@ feature "user can view index page of all their conversations" do
     end
     click_button 'Login'
     click_link 'Inbox'
+    click_link 'pineapple'
     expect(page).to have_content("pineapple")
   end
 end
