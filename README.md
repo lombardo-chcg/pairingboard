@@ -32,9 +32,6 @@ Appointments and cancellations will trigger automated messages to both mentors a
 ## Dependencies
 See Gemfile
 
-## Configuration Instructions
-There are no required configurations for using Pair Board.
-
 ## Contributors
 * [Elizabeth Alexander](https://github.com/eealexander2)
 * [Jonathan Kaplan](https://github.com/jbkaplan)
