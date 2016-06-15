@@ -7,7 +7,13 @@ feature "user can view index page of all their conversations" do
   let!(:bob_message){Message.create(sender_id: 2, body: "pineapple", conversation_id: 1)}
 
   scenario "user can click on Inbox in the nav bar to see list of conversations" do
-    visit '/users/1/conversations'
+    visit '/login'
+    within('form') do
+      fill_in 'Password', with:"aaaaaaaa"
+      fill_in 'Email', with:"dom@bob.com"
+    end
+    click_button 'Login'
+    click_link 'Inbox'
     expect(page).to have_content("pineapple")
   end
 end
