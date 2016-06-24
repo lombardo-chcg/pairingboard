@@ -15,6 +15,31 @@
   color: #ffffff;
 }
 
+.splash {
+  background-image: url(../img/chi-location-hero2x.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.log-in {
+  background: rgba(255, 255 ,255, .95);
+  position: fixed;
+  padding: 20px;
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
 .show-mentor-phase , .show-mentor-description {
   font-size: 17px;
 }
