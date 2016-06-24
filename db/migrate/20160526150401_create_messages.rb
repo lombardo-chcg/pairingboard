@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :conversation_id
       t.text :body
       t.integer :sender_id
+      t.boolean :read, default: false 
 
       t.timestamps(null: false)
     end

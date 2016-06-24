@@ -7,9 +7,12 @@ class OfferingsController < ApplicationController
 
   def create
     offering_tags = params["offering_tag"]
+    p offering_tags
+    p "---------------------"
     if offering_tags == nil
       if request.xhr?
         error = "Invalid offering!"
+        p "++++++++++++++++++++++++++++++++++++++"
         render json: { message: error }, status: 422
       end
     else
@@ -24,7 +27,9 @@ class OfferingsController < ApplicationController
         end
       end
     end
+    
     if request.xhr?
+      p "qqqqqqqqqqqqkdgkdhgdkjfhgdkjghdkfjghkdjfghdkjfghdkjfgh"
       render '_offering_row', layout: false, locals: {user: current_user}
     else
   # current_user.offerings.create(offering_params)

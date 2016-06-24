@@ -9,16 +9,24 @@
         <th>Date</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody> 
       <% @started_conversations.each do |conversation| %>
-          <tr>
+          <%if conversation.has_unread_messages?(current_user) %> 
+            <tr class = "unread-thread">
+          <%else%> 
+            <tr class = "read-thread">
+          <%end%>
             <td><%= link_to User.find(conversation.joiner_id).name, user_path(conversation.joiner_id) %></td>
             <td><%= link_to conversation.messages.last.body[0...75], user_conversation_path(current_user, conversation) %>...</td>
             <td><%= time_ago_in_words(conversation.messages.last.created_at) %> ago</td>
           </tr>
       <% end %>
       <% @joined_conversations.each do |conversation| %>
-          <tr>
+          <%if conversation.has_unread_messages?(current_user) %> 
+            <tr class = "unread-thread">
+          <%else%> 
+            <tr class = "read-thread">
+          <%end%>
             <td><%= link_to User.find(conversation.creator_id).name, user_path(conversation.creator_id) %></td>
             <td><%= link_to conversation.messages.last.body[0...75], user_conversation_path(current_user, conversation) %>...</td>
             <td><%= time_ago_in_words(conversation.messages.last.created_at) %> ago</td>

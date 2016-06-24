@@ -1,10 +1,10 @@
-
 <% @messages.each do |message| %>
   <%= link_to User.find(message.sender_id).name, User.find(message.sender_id) %>:
   <%= message.body %>
   <em><%= time_ago_in_words(message.created_at) %> ago</em>
   <br>
 <% end %>
+
 
 <%=form_for @message, :url => url_for(:controller => 'conversations', :action => 'create', conversation_id: @conversation.id), html: {role: "form"} do |f|%>
   <%if @message.errors.any? %>
@@ -17,6 +17,7 @@
         </ul>
       </div>
     <%end%>
+
     <div class="form-group">
       <br>
       <div class="row">
