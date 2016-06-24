@@ -4603,6 +4603,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
   background-color: #d9230f;
   border-color: #a91b0c;
+  z-index: 1000
 }
 .navbar-inverse .navbar-brand {
   color: #fac0ba;

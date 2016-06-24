@@ -1,0 +1,44 @@
+.conversation_header {
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+.message_body {
+  display: table;
+  width: 60%;
+  margin: auto;
+}
+
+.user_message,
+.other_party_message {
+  border-radius: 10px;
+  width: 45%;
+  padding: .5em 1em;
+  margin: .5em;
+}
+
+.user_message {
+  background-color: #D3D3D3;
+  float: right;
+  color: black;
+}
+
+.other_party_message {
+  background-color: #0953B2;
+  color: white;
+  float: left;
+}
+
+.message-body {
+  font-size: 1.25em;
+}
+
+.message-time {
+  text-align: right;
+  font-size: 1em;
+}
+
+.message-input {
+  width: 60%;
+  margin: auto;
+}

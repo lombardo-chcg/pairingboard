@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  root "offerings#index"
-  get '/', to:"offerings#index"
-  resources :users,except: [:index, :delete]
+  root "sessions#index"
+  # get '/', to: "offerings#index
+  resources :users, except: [:index, :delete]
 
   resources :users do
-    resources :conversations,except: [:update, :edit, :put ]
+    resources :conversations, except: [:update, :edit, :put ]
   end
 
   get '/login', to: 'sessions#new'

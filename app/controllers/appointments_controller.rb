@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-
+  before_action :require_login
+  
   def create
     mentor = User.find(params[:user])
     time = params[:time]
