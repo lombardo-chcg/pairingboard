@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+  before_action :require_login
 #conversations are only displayed on a profile page once the user has received a message
   def index
     #find the current user object

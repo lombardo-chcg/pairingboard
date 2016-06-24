@@ -1,4 +1,6 @@
 class OfferingsController < ApplicationController
+  before_action :require_login
+
   def index
     @saturday = date_of_next("Saturday")
     @offerings
@@ -17,6 +19,8 @@ class OfferingsController < ApplicationController
       offering = current_user.offerings.new(start_time: time, offering_date: params["date"])
         unless offering.save
           if request.xhr?
+          # if appointment.save
+          # if request.xhr?
             error = offering.errors.messages
             render json: { message: error }, status: 422
             return false
@@ -25,9 +29,9 @@ class OfferingsController < ApplicationController
       end
     end
     if request.xhr?
-      render '_offering_row', layout: false, locals: {user: current_user}
+      render '_offering_row', layout: false, locals: { user: current_user }
     else
-  # current_user.offerings.create(offering_params)
+      # current_user.offerings.create(offering_params)
       redirect_to offerings_path
     end
 

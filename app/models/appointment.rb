@@ -63,7 +63,6 @@ class Appointment < ActiveRecord::Base
       return true
     end
   end
-
 end
 
 
