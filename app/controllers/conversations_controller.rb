@@ -14,6 +14,12 @@ class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages
+    @messages.each do |message|
+      if current_user.id != message.sender_id
+        message.update_attribute(:read, true)
+      end 
+    end 
+
     @message = Message.new
   end
 

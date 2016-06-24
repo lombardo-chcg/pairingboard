@@ -14,6 +14,16 @@ class Conversation < ActiveRecord::Base
     senders_array.uniq
   end
 
+  def has_unread_messages?(current_user)
+    status = false 
+    self.messages.each do |message|
+      if message.read == false && message.sender_id != current_user.id
+        status = true 
+      end 
+    end 
+
+    return status  
+  end 
   # def self.sender_name(other_person_id_array)
   #   other_person_array = []
   #   other_person_id_array.each do |person_id|

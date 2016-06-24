@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('#myModal form').on("submit", "#mentor-submit-button", function(event) {
     event.preventDefault();
     var request = $.ajax({
-      method: "Post",
+      method: "POST",
       url: "/offerings",
       data: $(this).serialize()
     });

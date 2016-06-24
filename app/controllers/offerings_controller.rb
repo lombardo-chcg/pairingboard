@@ -28,6 +28,7 @@ class OfferingsController < ApplicationController
         end
       end
     end
+
     if request.xhr?
       render '_offering_row', layout: false, locals: { user: current_user }
     else
