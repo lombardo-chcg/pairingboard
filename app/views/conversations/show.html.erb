@@ -1,9 +1,22 @@
+<div class ='conversation_header'>
+  <% if current_user.id == @conversation.creator_id %>
+    <h3>Conversation with <%= link_to User.find(@conversation.joiner_id).name, User.find(@conversation.creator_id)%> </h3>
+  <% else %>
+    <h3>Conversation with <%= link_to User.find(@conversation.creator_id).name, User.find(@conversation.creator_id)%> </h3>
+  <% end %>
+</div>
 
 <% @messages.each do |message| %>
-  <%= link_to User.find(message.sender_id).name, User.find(message.sender_id) %>:
-  <%= message.body %>
-  <em><%= time_ago_in_words(message.created_at) %> ago</em>
-  <br>
+  <div class ='message_body'>
+    <% if current_user.id == message.sender_id %>
+      <div class = "user_message">
+    <% else %>
+      <div class = "other_party_message">
+    <% end %>
+      <p class='message-body'><%= message.body %></p>
+      <p class='message-time'><em><%= time_ago_in_words(message.created_at) %> ago</em></p>
+    </div>
+  </div>
 <% end %>
 
 <%=form_for @message, :url => url_for(:controller => 'conversations', :action => 'create', conversation_id: @conversation.id), html: {role: "form"} do |f|%>
@@ -17,12 +30,12 @@
         </ul>
       </div>
     <%end%>
-    <div class="form-group">
+    <div class="form-group message-input">
       <br>
       <div class="row">
         <div class="col-lg-12">
-          <%=f.label :reply %>
-          <%=f.text_field :body, class: 'form-control' %>
+          <%= form_tag %>
+          <%=f.text_area :body, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
